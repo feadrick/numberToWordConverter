@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container align-content-center pt-md-5">
+    <div class="row">
+        <div class="col-10">
+            <div class="input-group">
+                <input type="number" id="NumberInput" class="form-control" />
+            </div>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" id="convert"> Convert</button>
+        </div>
+    </div>
+    <div class="row pt-5">
+        <div class="col-12"><h3>result</h3></div>
+        <p id="result"></p>
+    </div>
+
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#convert").on("click", function () {
+                var formData = new FormData();
+                formData.append("inputNum", $("#NumberInput").val())
+                var url = '@Url.Action("Convert", "Home")';
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    data: formData,
+                    success: function (response) {
+                        $("#result").text(response)
+                    },
+                });
+
+
+            });
+
+        });
+    </script>
+
+}
