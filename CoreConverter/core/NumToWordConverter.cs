@@ -16,7 +16,7 @@ namespace CoreConverter.core
             string res = "";
             foreach (NumberDescriptor number in inputlist)
             {
-                res += $"{wg(number, inputlist.Count)}";
+                res += $"{WordGenerator(number, inputlist.Count)}";
             }
             if (res.Contains("AND  AND")) {
                 res = res.Replace("AND  AND", " AND ");
@@ -38,56 +38,7 @@ namespace CoreConverter.core
             return res;
         }
 
-        public string WordGenerator(NumberDescriptor numberDescriptor)
-        {
-            numberDescriptor.number = numberDescriptor.number.PadLeft(3, '0');
-
-            if (numberDescriptor.number.Length > 3)
-            {
-                throw new InvalidDataException("the length of part larger than 3");
-            }
-            string wordNumber = "";
-            for (int i = 0; i < numberDescriptor.number.Length; i++)
-            {
-                switch (i)
-                {
-                    case 0:
-                        wordNumber += _wordNumberCollection.hundreds[numberDescriptor.number[i].ToString()];
-                        break;
-                    case 1:
-                        if (numberDescriptor.number[i + 1].ToString() == "1")
-                        {
-                            wordNumber += _wordNumberCollection.teens[numberDescriptor.number[i].ToString()]=" ";
-                        }
-                        else
-                        {
-                            wordNumber += _wordNumberCollection.tens[numberDescriptor.number[i].ToString()];
-                        }
-                        break;
-                    case 2:
-                        if (numberDescriptor.number[i - 1].ToString() != "1")
-                        {
-                            wordNumber += _wordNumberCollection.ones[numberDescriptor.number[i].ToString()] + " ";
-                        }
-
-                        break;
-
-                }
-            }
-            if (numberDescriptor.numberScale != NumberScaleEnum.HUNDRED)
-            {
-
-                if (numberDescriptor.number != "000")
-                {
-                    wordNumber += numberDescriptor.numberScale.ToString();
-                }
-            }
-
-            return wordNumber;
-        }
-
-
-        public string wg(NumberDescriptor numberDescriptor,int countpart)
+        public string WordGenerator(NumberDescriptor numberDescriptor,int countpart)
         {
             
             numberDescriptor.number = numberDescriptor.number.PadLeft(3, '0');
