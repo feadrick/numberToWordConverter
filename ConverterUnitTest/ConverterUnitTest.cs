@@ -66,5 +66,13 @@ namespace ConverterUnitTest
             string actual = baseProcess("1000000");
             Assert.That(actual, Is.EqualTo("ONE MILLION DOLLARS"));
         }
+
+        //largest number
+        [Test]
+        public void convertNumberDuosexagintillion()
+        {
+            string actual = baseProcess("1".PadRight(190,'0'));
+            Assert.That(actual, Is.EqualTo("ONE DUOSEXAGINTILLION DOLLARS"));
+        }
     }
 }
