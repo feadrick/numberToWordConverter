@@ -25,8 +25,12 @@ namespace NumberToWordConverter.Controllers
         public string Convert() {
             string input = Request.Form["inputNum"];
             if (string.IsNullOrEmpty(input)) {
-                return "";
+                return "invalid input";
             }
+            if (input.Length>190) {
+                return "input number is too large";
+            }
+
             (List<NumberDescriptor> inputList, NumberDescriptor pointnum) = input.splitNumber();
             var res = converter.ConvertToWord(inputList, pointnum);
             return res;
