@@ -25,10 +25,10 @@ namespace NumberToWordConverter.Controllers
         public string Convert() {
             string input = Request.Form["inputNum"];
             if (string.IsNullOrEmpty(input)) {
-                return "invalid input";
+                return "INVALID INPUT";
             }
             if (input.Length>190) {
-                return "input number is too large";
+                return "INPUT NUMBER IS TOO LARGE";
             }
 
             (List<NumberDescriptor> inputList, NumberDescriptor pointnum) = input.splitNumber();
