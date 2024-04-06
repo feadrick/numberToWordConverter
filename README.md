@@ -7,7 +7,7 @@
 #Approach Reason<br/>
 1. The reason i create multiple project is to make sure that the code tested by creating unit test project ,and separating the core logic from web application,
 by using this approach, the core logic can be extended and used into other application if in future i need to add another project on different platform such as WPF or Window form.
-2. My implementation can convert number up until QUINQUINQUAGINTILLION
+2. My implementation can convert number up until DUOSEXAGINTILLION which is up to 190 digit number
 
 # How To Run Application?
 1. if you have visual studio,open the solution file and run NumberToWordConverter
